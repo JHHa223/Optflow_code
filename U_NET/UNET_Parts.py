@@ -27,44 +27,11 @@ class DoubleConv(nn.Module):
         x = self.conv(x)
         return x
 
-class ConvMultiscale(nn.Module):
-    def __init__(self, in_ch, out_ch, kernel_size):
-        super(ConvMultiscale, self).__init__()
-        self.convs = []
-        n_per = out_ch // len(kernel_size)
-        for i, k in enumerate(kernel_size):
-            if (i+1) == len(kernel_size):
-                out_ch_k  = out_ch - n_per*i
-            else:
-                out_ch_k = n_per
-            self.convs.append(ConvLReLU(in_ch, out_ch_k, kernel_size=k))
-        self.convs = nn.ModuleList(self.convs)
-
-    def forward(self, x):
-        y = []
-        for conv in self.convs:
-            y.append(conv(x))
-        y = torch.cat(y, 1)
-        return y
-
-class DoubleConvMultiscale(nn.Module):
-    def __init__(self, in_ch, out_ch, kernel_size):
-        super(DoubleConvMultiscale, self).__init__()
-        self.conv = nn.Sequential(
-            ConvMultiscale(in_ch, out_ch, kernel_size),
-            ConvMultiscale(out_ch, out_ch, kernel_size)
-            )
-
-    def forward(self, x):
-        return self.conv(x)
-
 class inconv(nn.Module):
     def __init__(self, in_ch, out_ch, kernel_size=3, conv=None):
         super(inconv, self).__init__()
         if conv:
             self.conv = conv
-        elif isinstance(kernel_size, list):
-            self.conv = DoubleConvMultiscale(in_ch, out_ch, kernel_size)
         else:
             self.conv = DoubleConv(in_ch, out_ch, kernel_size)
 
@@ -88,8 +55,6 @@ class down(nn.Module):
 
         if conv is not None:
             self.conv = conv
-        elif isinstance(kernel_size, list):
-            self.conv = DoubleConvMultiscale(in_ch, out_ch, kernel_size=kernel_size)
         else:
             self.conv = DoubleConv(in_ch, out_ch, kernel_size=kernel_size)
 
@@ -102,10 +67,7 @@ class up(nn.Module):
     def __init__(self, in_ch, out_ch, kernel_size=3, bilinear=False):
         super(up, self).__init__()
         self.up = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
-        if isinstance(kernel_size, list):
-            self.conv = DoubleConvMultiscale(in_ch, out_ch, kernel_size)
-        else:
-            self.conv = DoubleConv(in_ch, out_ch, kernel_size=kernel_size)
+        self.conv = DoubleConv(in_ch, out_ch, kernel_size=kernel_size)
 
     def forward(self, x1, x2):
         x1 = self.up(x1)
