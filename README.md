@@ -1,4 +1,4 @@
-# Optflow: A Deep Learning Model for Precipitation Nowcasting Using Multiple Optical Flow Algorithms
+# Optflow v1.0: A Deep Learning Model for Precipitation Nowcasting Using Multiple Optical Flow Algorithms
 
 A Deep Learning Model for Precipitation Nowcasting
 
