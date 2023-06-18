@@ -11,7 +11,7 @@ base_path = '../optflow_vis_test/'
 path_list = os.listdir(base_path)
 
 print(path_list)
-dtvl1=cv2.optflow.DualTVL1OpticalFlow_create()
+
 
 for i in range(len(path_list)):
 
@@ -26,17 +26,19 @@ for i in range(len(path_list)):
     print(path)
     
 #### Single-Temporal Model ####
-    
+
+dtvl1=cv2.optflow.DualTVL1OpticalFlow_create()
     for j in range(0,18):
         # Reading input data
         img0 = np.load(path[j]) # input image at t-10
         img1 = np.load(path[j+1]) # input image at t
 
-        flow_1 = dtvl1.calc(img1, img0, None)*1.
+        flow_1 = dtvl1.calc(img1, img0, None)
 
         # saving optical flow field
         np.save(new_path+'o_vector_202007301000+'+str((j+1)*10)+'min.npy',flow_1)
 
+        # Generating future frame using optical flow field
         h,w,_ = flow_1.shape
         flow_1[:,:,0] += np.arange(w)
         flow_1[:,:,1] += np.arange(h)[:,np.newaxis]
@@ -46,7 +48,8 @@ for i in range(len(path_list)):
         np.save(new_path+'o_precipitation_202007301000+'+str(10*(j+1))+'min.npy',Img_f)
 
 #### Multi-Temporal Model ####
-    
+
+dtvl1=cv2.optflow.DualTVL1OpticalFlow_create()    
     for j in range(0,18):
         # Reading input data
         img0 = np.load(path[j]) # input image at t-30
