@@ -10,3 +10,6 @@ Part I. Optical flow calculation and linear regression stage: /optical_flow
 
 Part II. U-Net architecture for training the nonlinear motion of precipitation fields: /U-NET
 
+#### Part I. Optical flow calculation and linear regression stage
+
+##### Part II. U-Net architecture for training the nonlinear motion of precipitation fields
