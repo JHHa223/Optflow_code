@@ -33,10 +33,10 @@ np.save('o_vector_202007301000+10min.npy',flow_1)
 h,w,_ = flow_1.shape
 flow_1[:,:,0] += np.arange(w)
 flow_1[:,:,1] += np.arange(h)[:,np.newaxis]
-Img_f = cv2.remap(img1, flow_1, None, cv2.INTER_CUBIC)
+img_f = cv2.remap(img1, flow_1, None, cv2.INTER_CUBIC)
         
 #saving future frame at t+10
-np.save('o_precipitation_202007301000+10min.npy',Img_f)
+np.save('o_precipitation_202007301000+10min.npy',img_f)
 ```
 
 ### Example: Linear regression stage
