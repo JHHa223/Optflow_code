@@ -15,7 +15,7 @@ print(path_list)
 def MLR_optflow(img1,img2,img3,img4,img_gt):
         
     W = np.array([1/4,1/4,1/4,1/4])
-    learning_rate = 1e-8
+    learning_rate = 1e-7
     error_prev = 1
 
     x_size = img1.shape[0]
@@ -66,7 +66,6 @@ for i in range(len(path_list)):
     path = sorted(path)
 
 # Reading input dataset
-# img0 and img1: precipitation data
     img0 = np.load(path[0]) # input image: t - 10
     img1 = np.load(path[1]) # input image: t
     img_gt = np.load(path[2]) # ground truth: t + 10
@@ -100,16 +99,17 @@ for i in range(len(path_list)):
     h,w,_ = flow_pca_0.shape
     flow_pca_0[:,:,0] += np.arange(w)
     flow_pca_0[:,:,1] += np.arange(h)[:,np.newaxis]     
-    
+
+    # Generating future frames via various optical flow algorithms 
     I_tvl1_0 = cv2.remap(img1, flow_tvl1_0, None, cv2.INTER_CUBIC)
     I_deepflow_0 = cv2.remap(img1, flow_deepflow_0, None, cv2.INTER_CUBIC)
     I_far_0 = cv2.remap(img1, flow_far_0, None, cv2.INTER_CUBIC)
     I_pca_0 = cv2.remap(img1, flow_pca_0, None, cv2.INTER_CUBIC)
 
-
+    # Linear regression stage        
     img_f = MLR_optflow(I_tvl1_0,I_deepflow_0,I_far_0,I_pca_0,img_gt)
 
-    # saving future frame at t + 10    
+    # Saving future frame at t + 10    
     np.save(new_path+'o_precipitation_202007301000+10min.npy',img_f)    
 
         
