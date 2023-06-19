@@ -4,7 +4,7 @@ import torch.backends.cudnn as cudnn
 import torch
 from torch import optim
 from Data_Loader import Loader
-from UNET_Optflow import *
+from UNET_Optflow import UNetOptflow
 
 
 #### TRAINING #####
