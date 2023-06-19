@@ -63,9 +63,8 @@ np.save('o_precipitation_202007301000+10min.npy',img_f)
 
 The codes are provided in the directory 'U-Net'.
 
-### main_Optflow.py: Importing data loader and U-Net model
+### Main_Optflow.py: Importing data loader and U-Net model
 ```python
-#### main_Optflow.py ####
 from Data_Loader import Loader
 from UNET_Optflow import UNetOptflow
 
