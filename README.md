@@ -59,7 +59,7 @@ np.save('o_precipitation_202007301000+10min.npy',img_f)
 
 The codes are provided at the directory "U-Net".
 
-Run the model through the command provided below.
+Run the U-Net model through the command provided below.
 ```shell
 export CUDA_VISIBLE_DEVICES = 0,1,2,3,4,5,6,7
 python main_Optflow.py
