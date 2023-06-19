@@ -70,7 +70,8 @@ from Data_Loader import Loader
 from UNET_Optflow import UNetOptflow
 ```
 
-### Run the U-Net model through the command provided below.
+### Running the U-Net model
+Use the command provided below.
 ```shell
 export CUDA_VISIBLE_DEVICES = 0,1,2,3,4,5,6,7
 python main_Optflow.py
