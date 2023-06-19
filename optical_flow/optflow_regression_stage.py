@@ -10,7 +10,6 @@ base_path = '../optflow_vis_test/'
 path_list = os.listdir(base_path)
 
 print(path_list)
-dtvl1=cv2.optflow.DualTVL1OpticalFlow_create()
 
 for i in range(len(path_list)):
 
