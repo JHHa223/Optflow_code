@@ -39,4 +39,18 @@ Img_f = cv2.remap(img1, flow_1, None, cv2.INTER_CUBIC)
 np.save('o_precipitation_202007301000+10min.npy',Img_f)
 ```
 
+### Example: Linear regression stage
+```python
+# Generating future frames via various optical flow algorithms 
+I_tvl1_0 = cv2.remap(img1, flow_tvl1_0, None, cv2.INTER_CUBIC)
+I_deepflow_0 = cv2.remap(img1, flow_deepflow_0, None, cv2.INTER_CUBIC)
+I_far_0 = cv2.remap(img1, flow_far_0, None, cv2.INTER_CUBIC)
+I_pca_0 = cv2.remap(img1, flow_pca_0, None, cv2.INTER_CUBIC)
+
+# Linear regression stage        
+img_f = MLR_optflow(I_tvl1_0,I_deepflow_0,I_far_0,I_pca_0,img_gt)
+
+# Saving future frame at t + 10    
+np.save('o_precipitation_202007301000+10min.npy',img_f)
+```
 ## Part II. U-Net architecture for training the nonlinear motion of precipitation fields
