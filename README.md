@@ -27,7 +27,7 @@ dtvl1=cv2.optflow.DualTVL1OpticalFlow_create()
 flow_1 = dtvl1.calc(img1, img0, None)
 
 # Saving optical flow field
-np.save('o_vector_202007301000+'+str((j+1)*10)+'min.npy',flow_1)
+np.save('o_vector_202007301000+10min.npy',flow_1)
 
 # Generating future frame using optical flow field
 h,w,_ = flow_1.shape
@@ -36,7 +36,7 @@ flow_1[:,:,1] += np.arange(h)[:,np.newaxis]
 Img_f = cv2.remap(img1, flow_1, None, cv2.INTER_CUBIC)
         
 #saving future frame at t+10
-np.save('o_precipitation_202007301000+'+str(10*(j+1))+'min.npy',Img_f)
+np.save('o_precipitation_202007301000+10min.npy',Img_f)
 ```
 
 ## Part II. U-Net architecture for training the nonlinear motion of precipitation fields
