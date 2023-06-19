@@ -9,7 +9,7 @@ A Deep Learning Model for Precipitation Nowcasting consists of two parts.
 ### Part I. Optical flow calculation and linear regression stage
 
 Multiple linear regression is implemented to minimize forecast errors produced by the optical flow method.
-
+ 
 ### Part II. U-Net architecture for training the nonlinear motion of precipitation fields
 
 The U-Net architecture is adopted to capture nonlinear motions that cannot be captured by the optical flow method.
