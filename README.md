@@ -6,15 +6,19 @@ Optflow v1.0 is a deep learning model that utilizes the optical flow method to e
 ## Model Architecture 
 A Deep Learning Model for Precipitation Nowcasting consists of two parts.
 
-Part I. Optical flow calculation and linear regression stage
+### Part I. Optical flow calculation and linear regression stage
 
-Part II. U-Net architecture for training the nonlinear motion of precipitation fields
+Multiple linear regression is implemented to minimize forecast errors produced by the optical flow method.
+
+### Part II. U-Net architecture for training the nonlinear motion of precipitation fields
+
+The U-Net architecture is adopted to capture nonlinear motions that cannot be captured by the optical flow method.
 
 ## Part I. Optical flow calculation and linear regression stage
 
 OpenCV library is used here to estimate the optical flow field.
 
-The codes for optical flow calculation are provided at the directory "optical_flow".
+The codes for optical flow calculation are provided in the directory "optical_flow".
 
 ### Example: Optical flow estimation
 ```python
@@ -57,7 +61,7 @@ np.save('o_precipitation_202007301000+10min.npy',img_f)
 ```
 ## Part II. U-Net architecture for training the nonlinear motion of precipitation fields
 
-The codes are provided at the directory "U-Net".
+The codes are provided in the directory 'U-Net'.
 
 Run the U-Net model through the command provided below.
 ```shell
