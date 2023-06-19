@@ -14,7 +14,7 @@ Part II. U-Net architecture for training the nonlinear motion of precipitation f
 
 OpenCV library is used here to estimate the optical flow field.
 
-### Example: A model with single optical flow algorithm
+### Example: Optical flow estimation
 ```python
 #### Single-Temporal Model ####
 
