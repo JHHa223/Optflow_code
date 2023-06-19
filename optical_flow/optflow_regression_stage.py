@@ -11,7 +11,7 @@ path_list = os.listdir(base_path)
 
 print(path_list)
 
-# Linear regression stage
+# The function for linear regression stage
 def MLR_optflow(img1,img2,img3,img4,img_gt):
         
     W = np.array([1/4,1/4,1/4,1/4])
