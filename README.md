@@ -63,14 +63,14 @@ np.save('o_precipitation_202007301000+10min.npy',img_f)
 
 The codes are provided in the directory 'U-Net'.
 
-### Example: Importing data loader and U-Net model
+### Importing data loader and U-Net model
 ```python
 #### main_Optflow.py ####
 from Data_Loader import Loader
 from UNET_Optflow import UNetOptflow
 ```
 
-Run the U-Net model through the command provided below.
+### Run the U-Net model through the command provided below.
 ```shell
 export CUDA_VISIBLE_DEVICES = 0,1,2,3,4,5,6,7
 python main_Optflow.py
