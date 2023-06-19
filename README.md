@@ -63,11 +63,22 @@ np.save('o_precipitation_202007301000+10min.npy',img_f)
 
 The codes are provided in the directory 'U-Net'.
 
-### Importing data loader and U-Net model
+### main_Optflow.py: Importing data loader and U-Net model
 ```python
 #### main_Optflow.py ####
 from Data_Loader import Loader
 from UNET_Optflow import UNetOptflow
+
+#### Importing U-NET MODEL ####
+device = 'cuda'
+model = UNetOptflow()
+model = model.to(device)
+
+#### DATA LOADER ####
+train_loader = torch.utils.data.DataLoader(
+    Loader(dummy=0),
+    batch_size=8, shuffle=True,
+    num_workers=32, pin_memory=True)
 ```
 
 ### Running the U-Net model
