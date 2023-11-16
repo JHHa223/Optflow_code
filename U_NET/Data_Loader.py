@@ -8,7 +8,7 @@ import torchvision
 from torchvision import transforms
 import glob
 
-# data structure: np.stack(img0,img1,img_pred,img_gt), size=(nx,ny,4)
+# data structure: np.stack(img0,img1,img_pred,img_gt), size=(4,nx,ny)
 # img0 -> radar image at t-10 with size=(nx,ny)
 # img1 -> radar image at t with size=(nx,ny)
 # img_pred -> predicted image at t+10 through optical flow with size=(nx,ny)
@@ -29,8 +29,6 @@ class Loader(Dataset):
     def __getitem__(self, idx):
 
         img = np.load(self.path[idx])
-        img = img.reshape(4,1024,1024) # for example, nx=256, ny=256
-
         return img
 
 if __name__ == '__main__':
