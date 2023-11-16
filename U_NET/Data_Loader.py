@@ -27,7 +27,6 @@ class Loader(Dataset):
         return len(self.path)
 
     def __getitem__(self, idx):
-
         img = np.load(self.path[idx])
         return img
 
