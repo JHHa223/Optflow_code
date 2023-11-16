@@ -29,7 +29,7 @@ class Loader(Dataset):
     def __getitem__(self, idx):
 
         img = np.load(self.path[idx])
-        img = img.reshape(4,256,256) # for example, nx=256, ny=256
+        img = img.reshape(4,1024,1024) # for example, nx=256, ny=256
 
         return img
 
