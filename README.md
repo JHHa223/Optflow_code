@@ -1,4 +1,4 @@
-# Optflow v1.0: A Deep Learning Model for Precipitation Nowcasting Using Multiple Optical Flow Algorithms
+# Optflow v1.0: A Deep Learning Model for Precipitation Nowcasting Using Multiple Optical Flow Algorithms (Ha & Lee 2023)
 
 ## Introduction
 Optflow v1.0 is a deep learning model that utilizes the optical flow method to enhance the performance of precipitation nowcasting.
@@ -86,3 +86,7 @@ Use the command provided below.
 export CUDA_VISIBLE_DEVICES = 0,1,2,3,4,5,6,7
 python main_Optflow.py
 ```
+
+## Reference
+Please refer the following publication for more details.
+Ha, J.-H., & Lee, H. (2023). A Deep Learning Model for Precipitation Nowcasting Using Multiple Optical Flow Algorithms. Weather and Forecasting, "https://doi.org/10.1175/WAF-D-23-0104.1.
